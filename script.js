@@ -9,7 +9,7 @@ const roleInput = document.getElementById("role");
 const locationInput = document.getElementById("location");
 const avail=document.getElementById("availability");
 const statusInput = document.getElementById("status");
-
+const technology=document.getElementById("techs");
 const jobList = document.getElementById("jobList");
 
 const searchInput = document.getElementById("search");
@@ -27,36 +27,32 @@ const themeBtn = document.getElementById("themeBtn");
 // 2. Array to store applications
 // ===============================
 
-let jobs = [
-    {
-        id: 1,
-        company: "Google",
-        role: "Frontend Developer",
-        location: "Hyderabad",
-        availability:"Immediate",
-        status: "Applied"
-    },
+fetch("https://jsonplaceholder.typicode.com/users")
+    .then(response => response.json())
+    .then(data => {
 
-    {
-        id: 2,
-        company: "Microsoft",
-        role: "React Developer",
-        location: "Bangalore",
-        availability:"15 days to join",
-        status: "Interview"
-    },
+        jobs = data.map(job => {
 
-    {
-        id: 3,
-        company: "Amazon",
-        role: "Software Engineer",
-        location: "Hyderabad",
-        availability:"more than 15 days to join",
-        status: "Selected"
-    }
-];
+            return {
+                id: job.id,
+                company: job.company.name,
+                role: job.name,
+                location: "Remote",
+                skills:["java","python"],
+                availability: "Immediate",
+                status: "Applied"
+            };
 
+        });
 
+        displayJobs(jobs);
+
+    })
+    .catch(error => {
+
+        console.error("Error:", error);
+
+    });
 // ===============================
 // 3. Display jobs
 // ===============================
@@ -89,6 +85,7 @@ function displayJobs(jobArray) {
             <p class="job-location">
                 📍 ${job.location}
             </p>
+            <p class="tech">${job.skills}</p>
             <p class="availability">⏱️ Available:${job.availability}</p>
 
             <div class="card-buttons">
@@ -127,6 +124,7 @@ jobForm.addEventListener("submit", (event) => {
         role: roleInput.value,
 
         location: locationInput.value,
+        techs:technology.value,
         availability:avail.value,
 
         status: statusInput.value
