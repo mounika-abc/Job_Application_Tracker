@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Job Application Tracker</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Header -->
+        <header class="header">
+            <div>
+                <h1>💼 JobTrack</h1>
+                <p>Track your job applications</p>
+            </div>
+
+            <button id="themeBtn">🌙</button>
+        </header>
+
+
+        <!-- Statistics -->
+        <section class="stats">
+
+            <div class="stat-card">
+                <h3>Total</h3>
+                <p id="totalJobs">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Applied</h3>
+                <p id="appliedJobs">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Interview</h3>
+                <p id="interviewJobs">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Selected</h3>
+                <p id="selectedJobs">0</p>
+            </div>
+
+        </section>
+
+
+        <!-- Add Application -->
+        <section class="form-box">
+
+            <h2>Add Job Application</h2>
+
+            <form id="jobForm">
+
+                <input
+                    type="text"
+                    id="company"
+                    placeholder="Company Name"
+                    required
+                >
+
+                <input
+                    type="text"
+                    id="role"
+                    placeholder="Job Role"
+                    required
+                >
+
+                <input
+                    type="text"
+                    id="location"
+                    placeholder="Location"
+                    required
+                >
+                <select id="availability">
+                    <option value="Immediate Joiner">Immediate Joiner</option>
+                    <optin value="5 days to join">5 days to Joiner
+                    </optin>
+                    <option value="30 daysn to join">more than 30 days to join</option>
+                </select>
+                
+
+                <select id="status">
+
+                    <option value="Applied">Applied</option>
+                    <option value="Interview">Interview</option>
+                    <option value="Selected">Selected</option>
+                    <option value="Rejected">Rejected</option>
+
+                </select>
+
+                <button type="submit">
+                    Add Application
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- Search and Filter -->
+        <section class="controls">
+
+            <input
+                type="text"
+                id="search"
+                placeholder="🔍 Search company or role..."
+            >
+
+            <select id="filter">
+
+                <option value="All">All Status</option>
+                <option value="Applied">Applied</option>
+                <option value="Interview">Interview</option>
+                <option value="Selected">Selected</option>
+                <option value="Rejected">Rejected</option>
+
+            </select>
+
+        </section>
+
+
+        <!-- Applications -->
+        <section id="jobList" class="job-list"></section>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
